@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chat Room</title>
+<link rel="stylesheet" href="stylesheets/main.css" />
+<style>
+@media screen and (min-width: 1000px) {
+  video {
+    height: 540px;
+  }
+}
+</style>
+</head>
+<body>
+<div id='container'>
+
+  <div id='videos'>
+    <video id='localVideo' autoplay muted></video>
+    <video id='remoteVideo' autoplay></video>
+  </div>
+
+  <div id='textareas'>
+                <textarea id="dataChannelSend" disabled placeholder="Press Start, enter some text, then press Send."></textarea>
+                <textarea id="dataChannelReceive" disabled></textarea>
+        </div>
+
+  <button id="sendButton" disabled>Send</button>
+
+</div>
+
+<script src='/socket.io/socket.io.js'></script>
+<script src='javascripts/adapter.js'></script>
+<script src='javascripts/chat.js'></script>
+
+</div>
+</body>
+</html>

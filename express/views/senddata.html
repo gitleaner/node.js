@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Send Data through WebRTC</title>
+<link rel="stylesheet" href="stylesheets/main.css" />
+<style>
+@media screen and (min-width: 1000px) {
+  video {
+    height: 360px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="container">
+
+  <textarea id="dataChannelSend" disabled placeholder="Press Start, enter some text, then press Send."></textarea>
+  <textarea id="dataChannelReceive" disabled></textarea>
+  
+  <div id="buttons">
+    <button id="startButton">Start</button>
+    <button id="sendButton">Send</button>
+    <button id="closeButton">Stop</button>
+  </div>
+
+  
+  <script src="javascripts/senddata.js"></script>
+  
+</div>
+</body>
+</html>
