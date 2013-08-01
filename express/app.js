@@ -13,6 +13,8 @@ var express = require('express')
   , static = require('node-static')
   , path = require('path');
 
+var a = require('./node_modules/node-rtc/build/Release/rtc.node');
+
 const crypto = require('crypto'),
 	fs = require('fs');
 	
@@ -47,7 +49,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/sign_in', routes.index);
 app.get('/users', user.list);
 app.get('/call', peer.call);
 app.get('/senddata', peer.send);
@@ -56,6 +58,8 @@ app.get('/chatroom', room.index);
 var server = https.createServer(options, app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
 
 var io = require('socket.io').listen(server);
 
@@ -72,6 +76,10 @@ io.sockets.on('connection', function (socket){
 	socket.on('message', function (message) {
                 log('Got message: ', message);
                 socket.broadcast.emit('message', message); // should be room only
+                  if (message === 'got user media') {
+					var pc, pc_config, pc_constraints;
+					 pc = new RTCPeerConnection(pc_config, pc_constraints);
+  				  }
         });
         
      socket.on('create or join', function (room) {
